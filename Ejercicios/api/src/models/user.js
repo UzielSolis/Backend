@@ -13,7 +13,7 @@ class User {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 //reject(new Error("Something went wrong"));
-                reject([...mockUsers]);
+                resolve([...mockUsers]);
             }, 1000)
         });
     }
