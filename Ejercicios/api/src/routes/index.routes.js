@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const authRouter = require('./auth');
-const userRouter = require('./users');
+const authRouter = require('./auth.routes');
+const userRouter = require('./users.routes');
 
 router.use('/auth', authRouter);
-router.use('/users', userRouter);
+router.use('/user', userRouter);
 
 router.get('', (req, res) => {
     res.send('router works');

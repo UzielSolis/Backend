@@ -1,5 +1,5 @@
-const User = require('./../models/user');
-const ResponseStatus = require('./../utils/response-status')
+const User = require('../models/user.models');
+const ResponseStatus = require('../utils/response-status')
 
 class UsersController {
     getUsers(req, res) {
