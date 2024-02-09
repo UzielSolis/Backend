@@ -14,7 +14,7 @@ class User {
 
     // Poner un nuevo usuario
     postUser(newUser) {
-        return axios.post('', newUser);
+        return axios.post(url, newUser);
     }
 
     // Actualizar usuario

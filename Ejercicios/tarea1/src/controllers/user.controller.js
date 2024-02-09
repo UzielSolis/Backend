@@ -23,7 +23,7 @@ class UsersController {
     postUser(req, res) {
         const user = new User();
         user.postUser(req.body).then(response => {
-            res.json(response.data);
+            res.status(ResponseStatus.CREATED).send(response.data);
         }).catch(e => {
             res.status(ResponseStatus.BAD_REQUEST).send('something went wrong');
         })
@@ -32,7 +32,7 @@ class UsersController {
     putUser(req, res) {
         const user = new User();
         user.putUser(req.params.id, req.body).then(response => {
-            res.json(response.data);
+            res.send(response.data);
             console.log('Usuario modificado');
         }).catch(e => {
             res.status(ResponseStatus.BAD_REQUEST).send('something went wrong');

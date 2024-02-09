@@ -4,8 +4,8 @@ const rutas = require("./src/routes/index.routes")
 
 const app = express();
 
-app.use(rutas);
 app.use(express.json());
+app.use(rutas);
 
 let port = process.env.PORT || 3000;
 
