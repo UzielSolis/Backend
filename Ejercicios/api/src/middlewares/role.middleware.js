@@ -2,9 +2,9 @@ const ResponseStatus = require('./../utils/response-status');
 
 roles = ['admin', 'user', 'author'];
 
-module.exports = (role) => {
+module.exports = (...role) => {
     return (req, res, next) => {
-        if(role in roles) {
+        if(role.includes(req.user.role)) {
             next();
         } else {
             res.sendStatus(ResponseStatus.UNAUTHORIZED);
