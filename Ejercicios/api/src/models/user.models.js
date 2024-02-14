@@ -1,26 +1,11 @@
-const { response } = require("express");
+const { Schema, model } = require('mongoose');
 
-const mockUsers = [
-    {
-        id: 1,
-        name: 'John Doe',
-        email: 'john.doe@email.com'
-    }
-]
+const schema = new Schema({
+    name: { type: String},
+    email: { type: String},
+    password: { type: String},
+    status: { type: String, default: 'new'},
+    role: { type: String, default: 'student'}
+});
 
-class User {
-    find() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                //reject(new Error("Something went wrong"));
-                resolve([...mockUsers]);
-            }, 1000)
-        });
-    }
-
-    insert(newUser) {
-        mockUsers.push(newUser);
-    }
-}
-
-module.exports = User;
+module.exports = model('users', schema);
