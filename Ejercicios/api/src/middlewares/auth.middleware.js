@@ -3,7 +3,7 @@ const ResponseStatus = require('./../utils/response-status');
 const authUser = {
     id: 1,
     role: 'admin',
-    name: 'Joh Doe'
+    name: 'John Doe'
 }
 
 const middleware = (req, res, next) => {

@@ -10,7 +10,6 @@ class UsersController {
         }).catch(e => {
             res.status(ResponseStatus.BAD_REQUEST).send('something went wrong');
         })
-        console.log('here');
     }
 
     createUser(req, res) {
