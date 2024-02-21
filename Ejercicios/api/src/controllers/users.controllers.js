@@ -1,5 +1,7 @@
+const jwt = require('jsonwebtoken');
 const User = require('../models/user.models');
-const ResponseStatus = require('../utils/response-status')
+const ResponseStatus = require('../utils/response-status');
+const hashPassword = require('../utils/hash-password');
 
 class UsersController {
     getUsers(req, res) {
@@ -24,11 +26,14 @@ class UsersController {
         const data = {
             name : req.body.name,
             email : req.body.email,
-            password : req.body.password
+            password : hashPassword(req.body.password)
         }
 
         User.create(data).then(response => {
-            res.send('ok');
+            res.send({
+                name: response.name,
+                email: response.email
+            });
         }).catch(e => {
             res.status(ResponseStatus.BAD_REQUEST).send('failed to create user');
         })
@@ -37,12 +42,23 @@ class UsersController {
     login(req, res) {
         const data = {
             email : req.body.email,
-            password : req.body.password
+            password : hashPassword(req.body.password)
         }
 
         User.findOne(data).then(response => {
             if(response) {
-                res.send('ok');
+                const data = {
+                    id : response._id,
+                    name : response.name,
+                    email : response.email,
+                    role : response.role
+                }
+
+                const token = jwt.sign(data, process.env.TOKEN_KEY);
+                res.send({
+                    token
+                })
+
             } else {
                 res.status(ResponseStatus.UNAUTHORIZED).send('failed to login');
             }
