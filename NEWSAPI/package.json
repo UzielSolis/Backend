@@ -10,7 +10,9 @@
   "author": "USG",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.7",
     "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
     "nodemon": "^3.1.0"
   }
 }

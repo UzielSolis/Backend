@@ -1,14 +1,18 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}   
-
-#centered-circle {
-    width: 100px;
-    height: 100px;
+div#circle {
+    margin-left: -50px;
+    margin-top: -50px;
     background-color: #d01e9b;
     border-radius: 50%;
+}
+
+table {
+    width: 100%;
+}
+
+table thead tr {
+    background-color: blueviolet;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: aquamarine;
 }
