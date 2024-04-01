@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import multer, { FileFilterCallback } from 'multer';
+import uploadS3 from '../middlewares/upload-s3';
 
 type File = {
     originalname: string,
@@ -28,6 +29,8 @@ const upload = multer({
     fileFilter
 });
 
+
+
 router.get('', (req: Request, res: Response) => {
     res.send('api works');
 });
@@ -35,6 +38,10 @@ router.get('', (req: Request, res: Response) => {
 router.post('/upload',upload.single('foto'), (req: Request, res: Response) => {
     console.log('File: ', req.file);
     res.send('endpoint para subir archivo');
+});
+
+router.post('/upload-s3', uploadS3.single('foto'), (req: Request, res: Response) => {
+    res.send('ok');
 });
 
 export default router;
